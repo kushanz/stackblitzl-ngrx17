@@ -1,0 +1,13 @@
+<select
+  class="form-control"
+  name="dropdown"
+  [ngModel]="quantity()"
+  (change)="onQuantitySelected($any($event.target).value)"
+>
+  <option value="">--select quantity--</option>
+  <option *ngFor="let q of quantityAvailable()">{{ q }}</option>
+</select>
+<hr />
+<p>SelectedVehicle : {{ selectedVehicle().name }}</p>
+<p>Price : {{ selectedVehicle().price }}</p>
+<p>Total : {{ exPrice() }}</p>

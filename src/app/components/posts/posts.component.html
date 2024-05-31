@@ -1,0 +1,28 @@
+<table *ngIf="posts$ | async as postData" class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">TITLE</th>
+      <th scope="col">DESCRIPTION</th>
+      <th scope="col">&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="post" *ngFor="let post of postData">
+      <td>{{ post.id }}</td>
+      <td>{{ post.title }}</td>
+      <td>{{ post.description }}</td>
+      <td>
+        <button class="btn btn-sm btn-primary" [routerLink]="['edit', post.id]">
+          edit
+        </button>
+        <button class="btn btn-sm" (click)="deletePost(post)">delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<button class="btn btn-small btn-primary" [routerLink]="['/posts/add']">
+  Add Post
+</button>
+<hr />
+<router-outlet></router-outlet>
